@@ -1,0 +1,42 @@
+:root {
+    --normal: brown;
+    --fire: orangered;
+    --water: blue;
+    --grass: green;
+    --electric: yellow;
+    --ice: lightblue;
+    --fighting: crimson;
+    --poison: purple;
+    --ground: tan;
+    --flying: mediumpurple;
+    --psychic: pink;
+    --bug: yellowgreen;
+    --rock: darkgray;
+    --ghost: lightgray;
+    --dark: black;
+    --dragon: indigo;
+    --steel: gray;
+    --fairy: lightpink;
+}
+
+.PokeCard{
+    border: solid .1rem black;
+    border-radius: 2.5%;
+    margin: .2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.PokeCardTitle a{
+    text-decoration: none;
+}
+
+
+
+@media (max-width: 600px){
+    .PokeCard {
+        width: 100%;
+    }
+}
