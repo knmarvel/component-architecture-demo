@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import Pokemon from "./components/Pokemon/Pokemon"
 import Navigation from './components/Navigation/Navigation'
+import SideBar from './components/SideBar/SideBar'
 const { v4 } = require('uuid');
 
 
@@ -26,7 +27,9 @@ function App(){
     <>
       <Navigation />
     <h1>A List Of Pokemon</h1>
-    <div className="PokeCardGroup">
+      <div className="PokeCardGroup">
+        <div className="SideBarHolder"><SideBar /></div>
+          <div className="PokemonCardHolder">
     {pokemon && pokemon.results.map(element => {
       return (
         <Pokemon 
@@ -36,6 +39,7 @@ function App(){
           />
       )
     })}
+            </div>
     </div>
     </>
   )
