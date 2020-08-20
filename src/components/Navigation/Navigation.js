@@ -15,7 +15,7 @@ const Navigation = () => {
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-info" class='navbutton'>Search</Button>
+          <Button variant="outline-info" className='navbutton'>Search</Button>
         </Form>
       </Navbar>
     </>

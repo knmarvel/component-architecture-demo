@@ -23,12 +23,15 @@ function App(){
       // .then(data => setPokemon(data))
     }
   });
+  const handleClick = () => {
+    console.log('clicked')
+  }
   return (
     <>
       <Navigation />
     <h1>A List Of Pokemon</h1>
       <div className="PokeCardGroup">
-        <div className="SideBarHolder"><SideBar /></div>
+        <div className="SideBarHolder"><SideBar handleClick={handleClick}/></div>
           <div className="PokemonCardHolder">
     {pokemon && pokemon.results.map(element => {
       return (
