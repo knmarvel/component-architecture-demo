@@ -16,9 +16,9 @@ function App(){
   useEffect(() => {
       if(!pokemon){
         tryingAwait()
-      // fetch("https://pokeapi.co/api/v2/pokemon/")
-      // .then(response => response.json())
-      // .then(data => setPokemon(data))
+      fetch("https://pokeapi.co/api/v2/pokemon/")
+      .then(response => response.json())
+      .then(data => setPokemon(data))
     }
   });
   return (
