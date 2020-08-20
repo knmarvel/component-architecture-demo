@@ -3,3 +3,13 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.SideBarHolder{
+  width:20%;
+  
+}
+.PokemonCardHolder{
+  width:70%;
+  display:flex;
+  flex-wrap:wrap;
+}

@@ -1,0 +1,11 @@
+li.list-group-item.list-group-item-action {
+    width:200px;
+    text-align:center;
+    margin-right:20px;
+}
+
+li.list-group-item.list-group-item-action.active{
+    color:cyan;
+    background-color:green;
+    border:1px solid red;
+}
