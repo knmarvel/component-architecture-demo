@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import Pokemon from "./components/Pokemon/Pokemon"
+import Navigation from './components/Navigation/Navigation'
 const { v4 } = require('uuid');
 
 
@@ -23,6 +24,7 @@ function App(){
   });
   return (
     <>
+      <Navigation />
     <h1>A List Of Pokemon</h1>
     <div className="PokeCardGroup">
     {pokemon && pokemon.results.map(element => {
