@@ -41,14 +41,9 @@ export default function Pokemon(props){
 
     )
     return(
-        <Card style={{ width: '15rem' }}>
-            {!pokeInfo ?
-            <Card.Title>
-                <a href={props.url}>{props.name.slice(0,1).toUpperCase() + props.name.slice(1)}</a>
-            </Card.Title>
-            :
-            
-                <>
+        <>
+        {pokeInfo ?
+        <Card style={{ width: '15rem', borderColor: `${typesToColors[pokeInfo.types[0].type.name]}`}}>
                 <Card.Img 
                     className="card-img-top"
                     src={pokeInfo.sprites.other["official-artwork"]["front_default"]}
@@ -82,8 +77,8 @@ export default function Pokemon(props){
                             </ListGroup>
                         </div>
                     </div>
-                </>
-        }
         </Card>
+        : "loading"}
+        </>
     )
 }
