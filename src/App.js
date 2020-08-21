@@ -3,6 +3,7 @@ import './App.css';
 import Pokemon from "./components/Pokemon/Pokemon"
 import Navigation from './components/Navigation/Navigation'
 import SideBar from './components/SideBar/SideBar'
+
 const { v4 } = require('uuid');
 
 
@@ -10,19 +11,14 @@ function App(){
   const [pokemon, setPokemon] = useState()
  
   const tryingAwait = async () => {
-    let response = await fetch("https://pokeapi.co/api/v2/pokemon/")
+    let response = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=200")
     let data = await response.json()
     setPokemon(data)
   }
 
   useEffect(() => {
-      if(!pokemon){
         tryingAwait()
-      fetch("https://pokeapi.co/api/v2/pokemon/")
-      .then(response => response.json())
-      .then(data => setPokemon(data))
-    }
-  });
+  }, []);
   const handleClick = () => {
     console.log('clicked')
   }
@@ -30,9 +26,9 @@ function App(){
     <>
       <Navigation />
     <h1>A List Of Pokemon</h1>
-      <div className="PokeCardGroup">
+      <div className="bodyContent">
         <div className="SideBarHolder"><SideBar handleClick={handleClick}/></div>
-          <div className="PokemonCardHolder">
+          <div className="PokeCardHolder">
     {pokemon && pokemon.results.map(element => {
       return (
         <Pokemon 
