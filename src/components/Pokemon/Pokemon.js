@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react"
+import {Card, ListGroup} from 'react-bootstrap'
 import "./Pokemon.css"
 
 const { v4 } = require('uuid');
@@ -28,63 +29,61 @@ const typesToColors = {
 export default function Pokemon(props){
     const [pokeInfo, setPokeinfo] = useState()
 
-    useEffect (() => {
+    useEffect(() => {
+        
         if(!pokeInfo){
             fetch(props.url)
             .then(response => response.json())
             .then(data => setPokeinfo(data))
         }
-    },
+    },[pokeInfo,props.url]
 
 
     )
     return(
-        <div className="PokeCard">
-            <h2 className="PokeCardTitle">
+        <Card style={{ width: '15rem' }}>
+            {!pokeInfo ?
+            <Card.Title>
                 <a href={props.url}>{props.name.slice(0,1).toUpperCase() + props.name.slice(1)}</a>
-            </h2>
-            {pokeInfo &&
+            </Card.Title>
+            :
+            
                 <>
-                <img 
+                <Card.Img 
+                    className="card-img-top"
                     src={pokeInfo.sprites.other["official-artwork"]["front_default"]}
                     alt="Official Artwork"
                     style={{backgroundColor: typesToColors[pokeInfo.types[0].type.name]}
                     }
                 />
-                <div className="PokeCardInfo">
-                    <div className="PokeCardExtras">
-                        <b>Height:</b> {pokeInfo.height} &nbsp;
-                        <b>Weight:</b> {pokeInfo.weight} &nbsp;
-                        <b># of Moves:</b> {pokeInfo.moves.length}
+                    <Card.Title>
+                        <a href={props.url}>{props.name.slice(0,1).toUpperCase() + props.name.slice(1)}</a>
+                    </Card.Title>
+                    <Card.Subtitle>
+                        <i>Height:</i> {pokeInfo.height} &nbsp; 
+                        <i>Weight:</i> {pokeInfo.weight}                    
+                    </Card.Subtitle>
+                    <div className="typesAbilities">
+                        <div>
+                            <b>Type: </b> 
+                            <ListGroup >
+                                {pokeInfo.types.map(type =>{
+                                    return <ListGroup.Item style={{border: "none"}} key={v4()}>{type.type.name}</ListGroup.Item>
+                                })}
+                            </ListGroup>
+                        </div>
+                            
+                        <div>
+                            <b>Abilities:</b>
+                            <ListGroup>
+                                {pokeInfo.abilities.map(ability =>{
+                                    return <ListGroup.Item style={{border: "none"}} key={v4()}>{ability.ability.name}</ListGroup.Item>
+                                })}
+                            </ListGroup>
+                        </div>
                     </div>
-                    <div className="PokeCardType">
-                        <b>Type: </b> 
-                        <ul>
-                        {pokeInfo.types.map(type =>{
-                            return <li key={v4()}>{type.type.name}</li>
-                        })}
-                        </ul>
-                    </div>
-                    <div className="PokeCardAbilities">
-                        <b>Abilities</b>
-                        <ul>
-                            {pokeInfo.abilities.map(ability =>{
-                                return <li key={v4()}>{ability.ability.name}</li>
-                            })}
-                        </ul>
-                    </div>
-                    <div className="PokeCardForms">
-                        <b>Forms: </b> 
-                        <ul>
-                        {pokeInfo.forms.map(form =>{
-                            return <li key={v4()}><a href={form.url}>{form.name.slice(0,1).toUpperCase() + form.name.slice(1)}</a></li>
-                        })}
-                        </ul>
-                    </div>
-                    
-                </div>
                 </>
-            }
-        </div>
+        }
+        </Card>
     )
 }
