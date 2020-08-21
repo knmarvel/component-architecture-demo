@@ -29,13 +29,14 @@ const typesToColors = {
 export default function Pokemon(props){
     const [pokeInfo, setPokeinfo] = useState()
 
-    useEffect (() => {
+    useEffect(() => {
+        
         if(!pokeInfo){
             fetch(props.url)
             .then(response => response.json())
             .then(data => setPokeinfo(data))
         }
-    },
+    },[pokeInfo,props.url]
 
 
     )

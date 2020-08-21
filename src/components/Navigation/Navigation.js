@@ -6,7 +6,7 @@ import "./Navigation.css"
 const Navigation = () => {
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" fixed="top">
               <Navbar.Brand href="#home"><img className="logo" src={logo} alt='logo'/></Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link href="/">Pokemon</Nav.Link>
